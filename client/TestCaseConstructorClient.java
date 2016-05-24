@@ -18,31 +18,11 @@ import ro.ase.cts.exceptii.ExceptieNumarTelefonLungimeInvalida;
 import ro.ase.cts.util.TipPlata;
 
 
-public class TestCaseClient {
+public class TestCaseConstructorClient {
 	//fixture
 	Client client;
 
-	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		System.out.println("setUpBeforeClass");
-	}
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		System.out.println("tearDownAfterClass");
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		System.out.println("setUp");
-		
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		System.out.println("TearDown");
-	}
 
 	@Test
 	public void testConstructorValoriNormale() throws Exception {
@@ -103,7 +83,7 @@ public class TestCaseClient {
 		String nume="Iordache";
 		String prenume="Robert";
 		String adresa="Piata Romana";
-		String telefon="2";
+		String telefon="1";
 		TipPlata tipPlata=TipPlata.CASH;
 		
 		try{
@@ -116,6 +96,24 @@ public class TestCaseClient {
 		}
 	}
 	
+	
+	@Test
+	public void testConstructorNumeGol(){
+		String nume="";
+		String prenume="Robert";
+		String adresa="Piata Romana";
+		String telefon="0762138369";
+		TipPlata tipPlata=TipPlata.CASH;
+		
+		
+		try{
+			client=new Client(nume, prenume, adresa, telefon, tipPlata);
+			fail("Numele nu poate fi gol.");
+		}catch(InvalidParameterException e){
+			
+		}
+		
+	}
 	
 	
 
